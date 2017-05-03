@@ -1,0 +1,23 @@
+.sliding-puzzle-figure {
+  margin: auto; }
+  .sliding-puzzle-figure .sliding-puzzle {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0px;
+    position: relative;
+    margin-top: 50px;
+    width: 670px;
+    height: 632px;
+    border: 2px solid blue; }
+    .sliding-puzzle-figure .sliding-puzzle .tile {
+      margin: 5px;
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: 0.1s linear;
+      height: 198px;
+      width: 198px;
+      border: 1px solid black; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,16 +1,14 @@
 .sliding-puzzle-figure {
-  // Weird width/heights to account for border
-  margin: auto;
 
   .sliding-puzzle {
     // Remove bullet styling and reset padding/margins
     list-style-type: none;
-    padding: 10px;
+    padding: 6px;
     margin: 0px;
     position: relative;
     margin-top: 50px;
-    width: 670px;
-    height: 632px;
+    width: 600px;
+    height: 600px;
 
     // Outer game border
     border: 2px solid blue;
@@ -23,12 +21,17 @@
       // Transitions
       left: 0;
       top: 0;
-      transition: 0.1s linear;
+      transition: 0.3s linear;
 
       // Weird width/heights to account for border
-      height: 198px;
-      width: 198px;
+      width: 130px;
+      height: 130px;
       border: 1px solid black;
+
+      padding: 35px;
+      text-align: center;
+      font-size: 32px;
+
     }
 
 

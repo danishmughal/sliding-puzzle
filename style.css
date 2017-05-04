@@ -1,23 +1,24 @@
-.sliding-puzzle-figure {
-  margin: auto; }
-  .sliding-puzzle-figure .sliding-puzzle {
-    list-style-type: none;
-    padding: 10px;
-    margin: 0px;
-    position: relative;
-    margin-top: 50px;
-    width: 670px;
-    height: 632px;
-    border: 2px solid blue; }
-    .sliding-puzzle-figure .sliding-puzzle .tile {
-      margin: 5px;
-      display: inline-block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      transition: 0.1s linear;
-      height: 198px;
-      width: 198px;
-      border: 1px solid black; }
+.sliding-puzzle-figure .sliding-puzzle {
+  list-style-type: none;
+  padding: 6px;
+  margin: 0px;
+  position: relative;
+  margin-top: 50px;
+  width: 600px;
+  height: 600px;
+  border: 2px solid blue; }
+  .sliding-puzzle-figure .sliding-puzzle .tile {
+    margin: 5px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 0.3s linear;
+    width: 130px;
+    height: 130px;
+    border: 1px solid black;
+    padding: 35px;
+    text-align: center;
+    font-size: 32px; }
 
 /*# sourceMappingURL=style.css.map */

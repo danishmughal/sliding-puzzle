@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", game);
 function game() {
 
   // Data structure to hold positions of tiles
-  var baseDistance = 33.5;
+  var baseDistance = 34.5;
   var tileMap = {
     1: {
       tileNumber: 1,
@@ -91,7 +91,6 @@ function game() {
   }
 
   function setup(tile) {
-    console.log(tile);
     var tileId = tile.innerHTML;
     tile.style.left = tileMap[tileId].left + '%';
     tile.style.top = tileMap[tileId].top + '%';
@@ -100,7 +99,6 @@ function game() {
 
   function tileClicked(event) {
     var tileNumber = event.target.innerHTML;
-    console.log("Tile " + tileNumber + " clicked.");
     moveTile(event.target);
 
     if (checkSolution()) {
@@ -121,9 +119,13 @@ function game() {
     }
 
     // Push to history
-    if (recordHistory == true){
-      history.push(tileNumber);
-      console.log("wtf");
+    if (recordHistory == true) {
+
+      if (history.length >= 3) {
+        if (history[history.length-1] != history[history.length-3]) history.push(tileNumber);
+      } else {
+        history.push(tileNumber);
+      }
     } 
 
     // Swap tile with empty tile
@@ -148,16 +150,8 @@ function game() {
   function tileMovable(tileNumber) {
     var selectedTile = tileMap[tileNumber];
     var emptyTile = tileMap.empty;
-
-    // Old algorithm, a little buggy w/ 4 incorrect cases
-    // var leftDifference = selectedTile.left - emptyTile.left
-    // var topDifference = selectedTile.top - emptyTile.top
-    // return (Math.abs(leftDifference + topDifference) == baseDistance);
-
     var movableTiles = movementMap(emptyTile.position);
-    console.log(movableTiles);
-    console.log(selectedTile.position);
-    console.log(movableTiles.includes(selectedTile.position));
+
     if (movableTiles.includes(selectedTile.position)) {
       return true;
     } else {
@@ -177,6 +171,9 @@ function game() {
         if (tileMap[key].position < tileMap[key-1].position) return false;
       }
     }
+
+    // Clear history if solved
+    history = [];
     return true;
   }
 
@@ -190,18 +187,28 @@ function game() {
   }
 
 
+  // Shuffles the current tiles
+  shuffleTimeouts = [];
+  function shuffle() {
+    clearTimers(solveTimeouts);
+    var boardTiles = document.querySelectorAll('.tile');
+    var shuffleDelay = 200;
+    shuffleLoop();
+
+    var shuffleCounter = 0;
+    while (shuffleCounter < 20) {
+      shuffleDelay += 200;
+      shuffleTimeouts.push(setTimeout(shuffleLoop, shuffleDelay));
+      shuffleCounter++;
+    }
+  }
+
   var lastShuffled;
 
   function shuffleLoop() {
-    console.log("BEGIN");
-    // console.log(tile);
     var emptyPosition = tileMap.empty.position;
     var shuffleTiles = movementMap(emptyPosition);
     var tilePosition = shuffleTiles[Math.floor(Math.floor(Math.random()*shuffleTiles.length))];
-    console.log("shuffle:" + shuffleTiles);
-    console.log("TP:" + tilePosition);
-    console.log("Empty:" + emptyPosition);
-
     var locatedTile;
     for(var i = 1; i <= 8; i++) {
       if (tileMap[i].position == tilePosition) {
@@ -218,34 +225,25 @@ function game() {
 
   }
 
-  // Shuffles the current tiles
-  function shuffle() {
-    var boardTiles = document.querySelectorAll('.tile');
-    var shuffleDelay = 200;
-    shuffleLoop();
 
-    var shuffleCounter = 0;
-    while (shuffleCounter < 20) {
-      shuffleDelay += 200;
-      setTimeout(shuffleLoop, shuffleDelay);
-      shuffleCounter++;
+  function clearTimers(timeoutArray) {
+    for (var i = 0; i < timeoutArray.length; i++) {
+      clearTimeout(timeoutArray[i])
     }
-      // for (var i = 0; i < 30; i++){ 
-      //   var tile = boardTiles[Math.floor(Math.random()*boardTiles.length)];
-      //   moveTile(tile);
-      // }
   }
 
   // Temporary function for solving puzzle.
   // To be reimplemented with a more sophisticated algorithm
+  solveTimeouts = []
   function solve() {
-    repeater = history.length;
-    for (var i = 0; i < repeater; i++) {
-      console.log(history);
-      console.log("moving");
-      // moveTile(, false);
-      setTimeout(moveTile, i*100, tiles[history.pop()-1], false);
+    clearTimers(shuffleTimeouts);
 
+
+    repeater = history.length;
+
+    for (var i = 0; i < repeater; i++) {
+      console.log("started");
+      solveTimeouts.push(setTimeout(moveTile, i*100, tiles[history.pop()-1], false));
     }
   }
 

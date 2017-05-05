@@ -7,6 +7,12 @@ body {
   width: 650px;
   height: 650px;
   margin: auto; }
+  .sliding-puzzle-figure a {
+    cursor: pointer; }
+    .sliding-puzzle-figure a#shuffle {
+      color: #E74C3C; }
+    .sliding-puzzle-figure a#solve {
+      color: #3498DB; }
   .sliding-puzzle-figure .sliding-puzzle {
     list-style-type: none;
     position: relative;

@@ -67,6 +67,7 @@ function game() {
   }
 
   // Board setup according to the tileMap
+  document.querySelector('#shuffle').addEventListener('click', shuffle , true);
   var tiles = document.querySelectorAll('.tile');
   var delay = -50;
   for(var i = 0; i < tiles.length; i++) {
@@ -122,7 +123,6 @@ function game() {
     tileMap[tileNumber].position = emptyPosition;
 
     recolorTile(tile, tileNumber);
-    console.log(tileMap);
   }
 
 
@@ -133,7 +133,6 @@ function game() {
 
     var leftDifference = selectedTile.left - emptyTile.left
     var topDifference = selectedTile.top - emptyTile.top
-    console.log(Math.abs(leftDifference + topDifference));
     return (Math.abs(leftDifference + topDifference) == baseDistance);
   }
 
@@ -151,8 +150,6 @@ function game() {
 
   // Check if tile is in correct place!
   function recolorTile(tile, tileId) {
-    console.log(tileMap[tileId].position);
-    console.log(tileId);
     if (tileId == tileMap[tileId].position) {
       tile.classList.remove("error");
     } else {
@@ -160,8 +157,29 @@ function game() {
     }
   }
 
+  // var shuffleCounter = 0;
+  // function shuffleLoop(tile) {
+  //   console.log(tile);
+  //   console.log(shuffleCounter);
+  //   if (tileMovable(tile.innerHTML)) {
+  //     moveTile(tile);
+  //     shuffleCounter += 1;
+  //     return true;
+  //   } 
+  //   return false;
+  // }
+
   // Shuffles the current tiles
   function shuffle() {
+    var boardTiles = document.querySelectorAll('.tile');
+    var shuffleDelay = -100;
+    // while (shuffleCounter < 2) {
+      // shuffleDelay += 100;
+      // setTimeout(shuffleLoop, shuffleDelay, tile);
+      for (var i = 0; i < 30; i++){ 
+        var tile = boardTiles[Math.floor(Math.random()*boardTiles.length)];
+        moveTile(tile);
+      }
   }
 
 

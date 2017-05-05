@@ -9,6 +9,18 @@ body {
     height: 650px;
     margin: auto;
 
+  a {
+    cursor: pointer;
+
+    &#shuffle {
+      color: #E74C3C;
+    }
+
+    &#solve {
+      color: #3498DB;
+    }
+  }
+
   .sliding-puzzle {
     // Remove bullet styling and reset padding/margins
     list-style-type: none;

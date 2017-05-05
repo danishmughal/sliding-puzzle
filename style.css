@@ -4,9 +4,11 @@ body {
   background-color: #ECF0F1; }
 
 .sliding-puzzle-figure {
-  width: 650px;
+  margin: auto;
   height: 650px;
-  margin: auto; }
+  width: 650px;
+  padding-bottom: 50vh;
+  padding-top: 10vh; }
   .sliding-puzzle-figure a {
     cursor: pointer; }
     .sliding-puzzle-figure a#shuffle {
@@ -18,7 +20,6 @@ body {
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -46,5 +47,10 @@ body {
       box-sizing: border-box; }
       .sliding-puzzle-figure .sliding-puzzle .tile.error {
         background-color: #F0867D; }
+
+@media only screen and (max-width: 650px) {
+  .sliding-puzzle-figure {
+    width: 90vw;
+    height: calc((1)*90vw); } }
 
 /*# sourceMappingURL=style.css.map */

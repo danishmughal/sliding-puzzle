@@ -5,9 +5,11 @@ body {
 }
 
 .sliding-puzzle-figure {
-    width: 650px;
-    height: 650px;
     margin: auto;
+    height: 650px;
+    width: 650px;
+    padding-bottom: 50vh;
+    padding-top: 10vh;
 
   a {
     cursor: pointer;
@@ -27,9 +29,7 @@ body {
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
-    // padding: 10px;
-        width: 100%;
+    width: 100%;
     height: 100%;
 
     // padding: 50px;
@@ -79,3 +79,12 @@ body {
   }
 }
 
+
+// Responsiveness
+@media only screen and (max-width: 650px) {
+
+  .sliding-puzzle-figure { 
+    width: 90vw;
+    height: calc((1)*90vw);;
+  }
+}

@@ -47,6 +47,8 @@ body {
       font-size: 60px;
       left: 0%;
       top: 0%;
+      transition: all 0.5s linear;
+      transition-timing-function: ease;
       box-sizing: border-box; }
       .sliding-puzzle-figure .sliding-puzzle .tile.error {
         background-color: #F0867D; }

@@ -69,6 +69,8 @@ body {
       // Transitions
       left: 0%;
       top: 0%;
+      transition: all 0.5s linear;
+      transition-timing-function: ease;
 
 
       box-sizing: border-box;

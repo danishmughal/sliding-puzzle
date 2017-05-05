@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", game);
 function game() {
 
   // Data structure to hold positions of tiles
+  var parentX = document.querySelector(".sliding-puzzle").clientHeight;
   var baseDistance = 34.5;
   var tileMap = {
     1: {
@@ -92,8 +93,12 @@ function game() {
 
   function setup(tile) {
     var tileId = tile.innerHTML;
-    tile.style.left = tileMap[tileId].left + '%';
-    tile.style.top = tileMap[tileId].top + '%';
+    // tile.style.left = tileMap[tileId].left + '%';
+    // tile.style.top = tileMap[tileId].top + '%';
+    var xMovement = parentX * (tileMap[tileId].left/100);
+    var yMovement = parentX * (tileMap[tileId].top/100);
+    var translateString = "translateX(" + xMovement + "px) " + "translateY(" + yMovement + "px)"
+    tile.style.webkitTransform = translateString;
     recolorTile(tile, tileId);
   }
 
@@ -136,8 +141,14 @@ function game() {
     tileMap.empty.left = tileMap[tileNumber].left;
     tileMap.empty.position = tileMap[tileNumber].position;
 
-    tile.style.top = emptyTop  + '%'; 
-    tile.style.left = emptyLeft  + '%';
+    // tile.style.top = emptyTop  + '%'; 
+    // tile.style.left = emptyLeft  + '%';
+
+    var xMovement = parentX * (emptyLeft/100);
+    var yMovement = parentX * (emptyTop/100);
+    var translateString = "translateX(" + xMovement + "px) " + "translateY(" + yMovement + "px)"
+    tile.style.webkitTransform = translateString;
+
     tileMap[tileNumber].top = emptyTop;
     tileMap[tileNumber].left = emptyLeft;
     tileMap[tileNumber].position = emptyPosition;

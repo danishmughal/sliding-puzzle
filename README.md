@@ -32,5 +32,5 @@ When a tile is in the correct position, it glows blue.
 <img src="https://i.imgur.com/Lf59WRC.png" /></div>
 <br>
 When a tile is not in its correct final position, it glows red. 
-
+<br>
 In order to win the game, the user must first shuffle the tiles and then get them back into the original order, with the bottom right tile slot unoccupied and all tiles glowing blue.
